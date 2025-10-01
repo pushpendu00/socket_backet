@@ -85,7 +85,7 @@ function logWithTime(message) {
 // -----------------------
 // REST routes
 // -----------------------
-app.post("/emit", (req, res) => {
+app.post("/webhook/emit", (req, res) => {
   const { event, message, routing } = req.body;
   console.log( event, message, routing);
 
@@ -130,7 +130,7 @@ app.post("/emit", (req, res) => {
 });
 
 // Webhook endpoint (async sending)
-app.post("/webhook/sse", (req, res) => {
+app.post("/emit", (req, res) => {
   const { event, message, routing } = req.body;
 
   if (!event || !message || !routing) {
@@ -185,4 +185,5 @@ const PORT = 8000;
 server.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
 });
+
 
