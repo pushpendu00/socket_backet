@@ -132,6 +132,7 @@ app.post("/webhook/emit", (req, res) => {
 // Webhook endpoint (async sending)
 app.post("/emit", (req, res) => {
   const { event, message, routing } = req.body;
+  console.log(routing.user_ids)
 
   if (!event || !message || !routing) {
     return res.status(400).json({ error: "Invalid payload" });
@@ -185,5 +186,6 @@ const PORT = 8000;
 server.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
 });
+
 
 
